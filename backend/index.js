@@ -1,16 +1,22 @@
-const express = require("express");
+// backend/app.js
+const express = require('express');
+const session = require('express-session');
+const connectDB = require('./configs/db');
+const authRoutes = require('./routes/auth');
+require('dotenv').config();
+
 const app = express();
 
+connectDB();
+
 app.use(express.json());
+app.use(session({
+  secret: 'your_session_secret',
+  resave: false,
+  saveUninitialized: true,
+}));
 
-app.get("/",async(req,res)=>{
-    try{
-        return res.status(200).json({status:"success",message:"server testing"})
-    }catch(error){
-        return res.status(500).json({status:"failure",message:"server error"})
-    }
-})
+app.use('/auth', authRoutes);
 
-app.listen(3000,()=>{
-    console.log("running on port 3000!");
-})
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
