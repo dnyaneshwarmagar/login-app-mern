@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "express-validator": "^7.1.0",
-    "node-captcha-generator": "^0.0.1"
-  }
-}
