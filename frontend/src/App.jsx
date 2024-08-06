@@ -8,18 +8,18 @@ function App() {
 
   useEffect(() => {
     fetch("https://login-app-mern.vercel.app/")
-      .then(() => res.json())
+      .then((res) => res.json())
       .then((data) => {
         setData(data);
       })
-      .catch((err) => {
+      .catch((error) => {
         console.log(error);
       });
   }, []);
 
   return <>
-  <h1>{data.status}</h1>
-  <h1>{data.message}</h1>
+  <h1>{data?.status}</h1>
+  <h1>{data?.message}</h1>
 
   </>;
 }
