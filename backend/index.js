@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const cors = require("cors");
 const connectDB = require('./utils/db');
 const authRoutes = require('./routes/auth');
@@ -10,13 +9,9 @@ const app = express();
 connectDB();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: 'https://login-app-mern-lacq.vercel.app'}));
 
-app.use(session({
-  secret: 'your_session_secret',
-  resave: false,
-  saveUninitialized: true,
-}));
+
 
 app.use('/auth', authRoutes);
 
