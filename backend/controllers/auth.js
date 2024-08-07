@@ -62,15 +62,15 @@ exports.login = async (req, res) => {
     const token = generateToken(user);
     res.status(200).json({ token });
   } catch (err) {
-    console.log('err: ', err);
+    // console.log('err: ', err);
     res.status(500).json({ error: 'Server error' });
   }
 };
 
 exports.requestResetPassword = async (req, res) => {
   const { email } = req.body;
-  console.log('email: ', email);
-  console.log("hit reset password");
+  // console.log('email: ', email);
+  // console.log("hit reset password");
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
   }
@@ -93,7 +93,7 @@ exports.requestResetPassword = async (req, res) => {
 
     res.status(200).json({ message: 'Password reset link sent to email' });
   } catch (err) {
-    console.log("hit error reset reset password");
+    // console.log("hit error reset reset password");
     res.status(500).json({ error: 'Server error' });
   }
 };
@@ -124,16 +124,16 @@ exports.resetPassword = async (req, res) => {
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
     await user.save();
-    console.log('password: ', "Password reset successfully");
+    // console.log('password: ', "Password reset successfully");
     res.status(200).json({ message: 'Password reset successfully' });
   } catch (err) {
-    console.log('err: ', err);
+    // console.log('err: ', err);
     res.status(500).json({ error: 'Server error' });
   }
 };
 
 exports.captcha = (req, res) => {
   const { text, captchaToken } = createCaptcha();
-  console.log('text: ', text);
+  // console.log('text: ', text);
   res.status(200).json({ captcha: text, captchaToken });
 };

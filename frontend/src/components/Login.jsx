@@ -17,7 +17,7 @@ const Login = () => {
   useEffect(() => {
     const fetchCaptcha = async () => {
       const response = await axios.get(`${BACKEND_APP_API_URL}/captcha`);
-      console.log('response: ', response);
+      // console.log('response: ', response);
       setCaptchaImage(response.data.captcha);
       setCaptchaToken(response.data.captchaToken);
     };
@@ -34,8 +34,6 @@ const Login = () => {
         username, password, captcha, captchaToken
       });
       setLoading(false);
-      console.log("login successful");
-
       navigate('/message',{ state: { message:"Login successful!" }});
     } catch (error) {
       setLoading(false);

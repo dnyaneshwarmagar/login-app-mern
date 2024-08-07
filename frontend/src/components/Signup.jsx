@@ -24,7 +24,8 @@ const Signup = () => {
         name, email, username, password
       });
       setLoading(false);
-      navigate('/login');
+      navigate('/message',{ state: { message:"Signup successful, you can go for LOGIN now!" }});
+
     } catch (error) {
       setLoading(false);
       setError(error.response?.data?.error || 'Something went wrong');

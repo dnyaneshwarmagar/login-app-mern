@@ -18,7 +18,7 @@ const sendResetPasswordEmail = async (email, resetUrl) => {
     });
 
   } catch (error) {
-    console.log('error: ', error);
+    // console.log('error: ', error);
     throw new Error(error)
   }
 };
