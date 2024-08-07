@@ -25,7 +25,7 @@ const ResetPassword = () => {
       });
       setLoading(false);
       setMessage(response.data.message);
-      // navigate('/message',{ state: { message:"Password has been updated successfully!" }});
+      navigate('/message',{ state: { message:"Password has been updated successfully!" }});
     } catch (error) {
       setLoading(false);
       setError(error.response?.data?.error || 'Something went wrong');
