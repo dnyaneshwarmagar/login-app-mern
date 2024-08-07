@@ -63,7 +63,7 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div>
+        <div className="unselectable">
           <br />
           CAPTCHA: <br />
           <i>
