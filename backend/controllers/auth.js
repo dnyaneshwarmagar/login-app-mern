@@ -120,6 +120,18 @@ exports.resetPassword = async (req, res) => {
     if (isSamePassword) {
       return res.status(400).json({ error: 'New password cannot be the same as the previous password' });
     }
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{7,}$/;
+    const isValidPassword = passwordRegex.test(password);
+    console.log('password: ', password);
+
+    if (!isValidPassword) {
+      return res.status(400).json({ error: `Password must be at least 7 characters long
+        It must contain at least one capital letter,
+         at least one small letter,
+        at least one special character,
+        contain at least one number.` });
+    }
+
     user.password = password;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpires = undefined;
