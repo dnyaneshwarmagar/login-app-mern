@@ -9,7 +9,11 @@ const app = express();
 connectDB();
 
 app.use(express.json());
-app.use(cors({origin: 'https://login-app-mern-lacq.vercel.app'}));
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 
 
